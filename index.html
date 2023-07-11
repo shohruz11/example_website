@@ -1,8 +1,104 @@
 <html>
-     <head>
-         <title> Example </title>
- </head>
- <body>
- Hello World!
- </body>
- </html>
+  <head>
+    <title>Cosine Similarity Algorithm for Document Comparison</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#algorithm">Algorithm</a></li>
+          <li><a href="#code">Code</a></li>
+
+       </ul>
+      </nav>
+
+    </eader>
+
+    <main>
+      <section id="about">
+       <h1>Cosine Similarity Algorithm for Document Comparison</h1>
+        <p>
+          Welcome to my midterm project website. In this project, I will present
+          an algorithm for finding the cosine similarity between 50 documents.
+          This algorithm can be used to compare documents and determine how
+          similar they are to each other.
+        </p>
+      </section>
+      <section id="algorithm">
+        <h2>Algorithm Steps</h2>
+        <ol>
+          <li>Convert each word in the documents to its lowercase form.</li>
+          <li>Remove any non-alphanumeric characters from the documents.</li>
+          <li>Create a set of all unique words in the documents.</li>
+
+          <i>Create a document-term matrix that represents the frequency of each word in each document.</li>
+          <li>Normalize the columns of the document-term matrix to produce the term frequency-inverse document frequency (TF-IDF) matrix.</li>
+          <li>Calculate the cosine similarity between each pair of documents using the TF-IDF matrix.</li>
+        </ol>
+      </section>
+      <section id="code">
+
+        <h2>Sample Code</h2>
+       <p>
+          Here is some sample Python code that implements the algorithm:
+        </p>
+        <pre>
+          <code>
+
+import pandas as pd
+import numpyas np
+
+from sklearn.feature_extraction.text importTfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Load the documents
+documents = [open(f"{i}.txt", "r").read() for i in range(1, 51)]
+
+# Step 1: Convert to lowercase
+documents = [doc.lower() for doc in documents]
+
+# Step 2: Remove non-alphanumeric characters
+documents = [re.sub(r'\W+', ' ', doc) for doc in documents]
+
+# Step 3: Create set of unique words
+words = set(" ".join(documents).split())
+
+
+# Step 4:Create document-term matrix
+vectorizer = TfidfVectorizer(vocabulary=words)
+document_term_matrix = vectorizer.fit_transform(documents)
+
+# Step 5: Calculate cosine similarity
+cosine_similarity_matrix = cosine_similarity(document_term_matrix)
+          </code>
+        </pre>
+
+       <p>
+
+          In the above code I have used the
+          <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html"
+
+            target="_blank"
+            >TfidfVectorizer</a
+          >
+          class from the scikit-earn library to implement steps 3 and 4. I
+          have also used the
+          <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html"
+
+            target="_lank"
+
+            >osine_similarity</a
+          >
+          function from the same library to implement step 6.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Midterm Project</p>
+    </footer>
+  </body>
+</html>
