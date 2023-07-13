@@ -8,6 +8,7 @@ body {
   max-width: 960 px;
   margin: 0 auto;
   padding: 20 px;
+  text-align: center;
 }
 
 /* Header Styles */
