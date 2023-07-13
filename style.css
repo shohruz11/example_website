@@ -14,13 +14,16 @@ body {
 /* Header Styles */
 header {
   background-color: #f2f2f2;
-  padding: 20 px;
+  padding: 20px;
+  text-align: center;
 }
 
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul li {
@@ -31,6 +34,14 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   color: #333;
+  padding: 5 px;
+  border-radius: 3 px;
+  transition: background-color 0.3 s ease;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+  color: #fff;
 }
 
 /* Main Content Styles */
