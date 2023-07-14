@@ -1,104 +1,104 @@
 <html>
-  <head>
-    <title>Cosine Similarity Algorithm for Document Comparison</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#algorithm">Algorithm</a></li>
-          <li><a href="#code">Code</a></li>
+<head>
+  <title>Midterm Project</title>
+  <style>
+    body {
+      background-color: #6CC16B; /* Green background color */
+      color: #FFFFFF; /* White text color */
+      font-family: Arial, sans-serif; /* Choose your preferred font */
+      margin: 0;
+      padding: 0;
+    }
 
-       </ul>
-      </nav>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-    </eader>
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 
-    <main>
-      <section id="about">
-       <h1>Cosine Similarity Algorithm for Document Comparison</h1>
-        <p>
-          Welcome to our midterm project website. In this project, We will present
-          an algorithm for finding the cosine similarity between 50 documents.
-          This algorithm can be used to compare documents and determine how
-          similar they are to each other.
-        </p>
-      </section>
-      <section id="algorithm">
-        <h2>Algorithm Steps</h2>
+    h2{
+        text-align: left;
+        margin-top: 20px;
+        font-family: 'Times New Roman', Times, serif;
+        text-decoration-line: underline;
+        font-weight: bold;
+    }
+    p {
+      margin-bottom: 20px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .colab-link {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .colab-link a {
+      color: #FFFFFF; /* Link color */
+      text-decoration: none;
+    }
+
+    .colab-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <p>Welcome to my midterm project showcase! Here, I will provide a brief description of my project and its key features.</p>
+
+        <h2>Problem </h2>
+
+    <p> Given a dataset with 50 text files, we were tasked with building a machine learning model that was capable of predicting the similarity between each of the 50 documents. Our goal was to create the most accurate model in which document similarity could be calculated. In order to achieve this, we incorporated as much preprocessing as possible to prevent the machine learning model from basing similarity on punctuation, capitalization, or articles (the/a/an). </p>
+
+        <h2>Preprocessing </h2>
+    <p> We had a dataset of 50 documents given to us by William and Mary College, which covered a wide breadth of information regarding conservation and ecology. In order to have an accurate machine-learning model, our data needed to be clean. To do so, we incorporated several preprocessing steps: <br>
         <ol>
-          <li>Convert each word in the documents to its lowercase form.</li>
-          <li>Remove any non-alphanumeric characters from the documents.</li>
-          <li>Create a set of all unique words in the documents.</li>
-
-          <i>Create a document-term matrix that represents the frequency of each word in each document.</li>
-          <li>Normalize the columns of the document-term matrix to produce the term frequency-inverse document frequency (TF-IDF) matrix.</li>
-          <li>Calculate the cosine similarity between each pair of documents using the TF-IDF matrix.</li>
+        <li>Remove articles (a/an/the)</li>
+        <li> Make all words lowercase</li>
+        <li>Finds and removes stopwords</li>
+        <li> Remove punctuation</li>
+        <li> Lemmatize nouns, verbs, and adjectives</li>
         </ol>
-      </section>
-      <section id="code">
+    </p>
 
-        <h2>Sample Code</h2>
-       <p>
-          Here is some sample Python code that implements the algorithm:
-        </p>
-        <pre>
-          <code>
+        <h2>Features </h2>
+    <p> We first needed to vectorize our document text from words to numbers so that the machine-learning model could run on it. We tried two vectorizing techniques, LDA (Latent Dirichlet allocation), which extracts topics latent to the paper, and TF-IDF, which extracts frequently occurring keywords. One of the reasons why we initially decided on using the TF-IDF vectorizer is because it includes the TF-IDF transformer, which is well known for document retrieval. We also chose TF-IDF over LDA because we were looking for a machine-learning model that could find keywords (such as hunting, deer, river) amongst the documents, and match document similarity based on articles that have a high percent of the same frequently occurring keywords. <br>
+        After initializing the TF-IDF and applying the matrix function, we were left with the TF-IDF (term frequency-inverse document) matrix. We then decided to use cosine similarity to find document similarity. Cosine similarity is a metric that measures the cosine of the angle between two vectors. By using TF-IDF to vectorize our document into numbers, we were able to use cosine similarity as a metric to measure the similarity of term frequency between each of the documents.<br>
+        The final portion of our code calculates the similarity between documents and stores them in a dictionary called “similarity_scores”.  The code iterates over all document pairs using nested loops. For each pair, it retrieves the similarity score from the similarity matrix. It then assigns this similarity score to the corresponding document pair key in the similarity_scores dictionary. <br>
+        Finally, the function returns the similarity_scores dictionary containing the similarity scores for all document pairs.
+    </p>
 
-import pandas as pd
-import numpyas np
+        <h2>Models</h2>
+    <p>We decided to stick with an NLP model because NLP models are the most widely used for various text-related tasks such as text classification, word embedding, sequence labeling, and speech recognition. There are also many NLP techniques for text classification including Bag of Words, Ngrams, TF-IDF, and word2vec. TF-IDF and cosine classification, both types of techniques used for NLP models, were the most efficient for our dataset as we were trying to use text classification to find term frequency, thus allowing us to calculate document similarity. </p>
 
-from sklearn.feature_extraction.text importTfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+        <h2>Results</h2>
+    <p>     </p> <a href="YOUR_GOOGLE_COLAB_LINK" target="_blank">Click here to view the project in Google Colab</a>
 
-# Load the documents
-documents = [open(f"{i}.txt", "r").read() for i in range(1, 51)]
+        <h2>Analysis</h2>Looking at the code, the results show the document similarity between each of the 50 documents as a decimal value. However, the code does not print out the similar frequently occurring keywords between the documents. This raises an issue since we are taking the code’s document similarity values at face-value with no proof as to what gave rise to those values. To check that the document similarity values seem reasonable, we decided to read through the articles where two documents shared a high document similarity value or low document similarity value. We chose to read through the articles rather than simply looking at the title because they may cover similar topics despite not sharing a title with the same text.
+        Document 11 and Document 38 supposedly shared a 0.05507916580572254 similarity, which is very low. Document 11 was titled “Reducing elasmobranch bycatch: Laboratory investigation of rare earth metal and magnetic deterrents with spiny dogfish and Pacific halibut” and described experiments conducted to test the efficacy of rare earth magnets and metals in reducing attacks on and consumption of bait by spiny dogfish. It also discusses the potential applications and limitations of using cerium mischmetal as a deterrent for reducing spiny dogfish bycatch. Document 38 was titled “TRAINING DEER TO AVOID SITES THROUGH NEGATIVE REINFORCEMENT” and conducted a series of trials to investigate whether mild electric shock could induce place avoidance in deer. It also highlighted limitations and considerations about the study, as well as concerns about increasing deer interactions with domestic animals. After reading both texts thoroughly, it was evident that neither text remotely shared any similar background, experiment, or evidence.
+        Document 42 and 20 supposedly shared a 0.7134682412624841 similarity, one of the highest document similarity values in the directory. Document 42 was titled “Wolf Depredation Trends and the Use of Fladry Barriers to Protect Livestock in Western North America” and focused on the issue of wolf depredation on domestic animals, particularly sheep and cattle, in Alberta, Canada, and Idaho, Montana, and Wyoming, United States. The study concluded that fladry barriers were effective in deterring captive and wild wolves for varying durations. The paper talked about concepts relating to behavioral analysis and cost-effective tools to maintain strategies to mitigate the problem with livestock. Document 20 was titled “Testing fladry as a nonlethal management tool for wolves and coyotes in Michigan” and discusses the potential conflicts between gray wolves and humans, particularly in agricultural landscapes. The research described in the passage highlights the potential effectiveness of fladry as a nonlethal management tool to reduce predator visitation and livestock depredations. It also discusses the development of management practices to find safe and effective methods for mitigating conflicts between wolves and humans in agricultural landscapes.
+        Both documents cover issues relating to a reduction in wolf populations attributed to their conflict with humans, as well as the use of flandry barriers to mitigate these issues. They seem to share a high document similarity based on text analysis, thus validating the code’s document similarity value.
+        Since the two documents with a low similarity seem to not share any significant background, information, or evidence,  and the two documents with a moderate-high similarity share a similar topic and study, it seems that our machine-learning model was reasonably accurate.
 
-# Step 1: Convert to lowercase
-documents = [doc.lower() for doc in documents]
+    </p>
 
-# Step 2: Remove non-alphanumeric characters
-documents = [re.sub(r'\W+', ' ', doc) for doc in documents]
-
-# Step 3: Create set of unique words
-words = set(" ".join(documents).split())
-
-
-# Step 4:Create document-term matrix
-vectorizer = TfidfVectorizer(vocabulary=words)
-document_term_matrix = vectorizer.fit_transform(documents)
-
-# Step 5: Calculate cosine similarity
-cosine_similarity_matrix = cosine_similarity(document_term_matrix)
-          </code>
-        </pre>
-
-       <p>
-
-          In the above code We have used the
-          <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html"
-
-            target="_blank"
-            >TfidfVectorizer</a
-          >
-          class from the scikit-earn library to implement steps 3 and 4. We
-          have also used the
-          <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html"
-
-            target="_lank"
-
-            >cosine_similarity</a
-          >
-          function from the same library to implement step 6.
-        </p>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2023 Midterm Project</p>
-    </footer>
-  </body>
+         <h2>Code</h2>
+    <!-- we added the collab link -->
+    <script src="https://gist.github.com/jayanimannam/8e03aeddd135deac333d04bab178cc7f.js"></script>
+    <div class="colab-link">
+      <a href="https://colab.research.google.com/drive/14VvR4kc06ToqbeOARQ-cFgwy-BLJVAgn?usp=sharing" target="_blank">Click here to view the project in Google Colab</a>
+    </div>
+  </div>
+</body>
+    </div>
+  </div>
+</body>
 </html>
